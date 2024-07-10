@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"> <!-- Déclaration de l'encodage des caractères -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Assurer une bonne mise en page sur les appareils mobiles -->
+    <title>Inscription</title> <!-- Titre de la page -->
+</head>
+<body>
+    <h2>Inscription</h2> <!-- Titre de la section d'inscription -->
+    <form method="post" action="/path-to-your-signup-endpoint/"> <!-- Début du formulaire, envoi des données par POST -->
+        <!-- Champ pour le nom d'utilisateur -->
+        <label for="username">Nom d'utilisateur:</label> <!-- Étiquette pour le champ du nom d'utilisateur -->
+        <input type="text" id="username" name="username" required> <!-- Champ de saisie pour le nom d'utilisateur, requis pour la soumission -->
+        <br><br> <!-- Saut de ligne pour espacement visuel -->
+
+        <!-- Champ pour le mot de passe -->
+        <label for="password">Mot de passe:</label> <!-- Étiquette pour le champ du mot de passe -->
+        <input type="password" id="password" name="password" required> <!-- Champ de saisie pour le mot de passe, requis pour la soumission -->
+        <br><br> <!-- Saut de ligne pour espacement visuel -->
+
+        <!-- Bouton de soumission -->
+        <button type="submit">S'inscrire</button> <!-- Bouton pour soumettre le formulaire -->
+    </form>
+</body>
+</html>

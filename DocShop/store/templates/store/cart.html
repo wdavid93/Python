@@ -1,0 +1,73 @@
+<!-- templates/store/view_cart.html -->
+{% extends 'base.html' %}
+
+{% block title %}Mon Panier{% endblock %}
+
+{% block content %}
+<!-- Section du panier -->
+<div class="container my-5">
+    <h2 class="text-center mb-4">Mon Panier</h2>
+    {% if orders %}
+        <div class="row">
+            {% for order in orders %}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        {% if order.product.image %}
+                            <img src="{{ order.product.image.url }}" class="card-img-top img-fluid" alt="{{ order.product.name }}">
+                        {% else %}
+                            <img src="https://via.placeholder.com/200" class="card-img-top img-fluid" alt="Image non disponible">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ order.product.name }}</h5>
+                            <p class="card-text">
+                                Quantité: {{ order.quantity }}
+                            </p>
+                            <p class="card-text">
+                                Prix: {{ order.product.price }} €
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Editer</button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger">Supprimer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="text-center">
+            <!-- Bouton "Vider le panier" avec texte blanc -->
+            <button class="btn btn-primary btn-lg text-white"><a href="{% url 'delete-cart' %}" class="text-white">Vider le panier</a></button>
+            <!-- Bouton "Procéder au paiement" avec texte blanc -->
+            <button class="btn btn-primary btn-lg text-white">Procéder au paiement</button>
+        </div>
+        
+  
+    {% else %}
+        <p class="text-center">Votre panier est vide.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<!-- Inclure jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Inclure Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    // Exemple de fonctionnalité pour les boutons "Editer" et "Supprimer"
+    $('.btn-outline-secondary').click(function() {
+        alert('Fonctionnalité d\'édition non implémentée.');
+    });
+
+    $('.btn-outline-danger').click(function() {
+        $(this).closest('.col-md-4').fadeOut('slow', function() {
+            $(this).remove();
+        });
+    });
+});
+</script>
+{% endblock %}

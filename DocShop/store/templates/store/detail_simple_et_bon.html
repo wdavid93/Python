@@ -1,0 +1,27 @@
+<!-- index.html -->
+
+<!-- Indiquer que ce template étend le fichier base.html -->
+{% extends "base.html" %}
+
+<!-- Définir le bloc title pour cette page spécifique -->
+<!-- {% block title %}
+Detail - My E-commerce Site 
+{% endblock %} -->
+
+<!-- Définir le bloc content pour cette page spécifique -->
+{% block content %}
+
+<h2>Détail du Produit</h2>
+<ul>
+    <h2>{{ product.name }}</h2>
+    <h3>{{ product.price }} €</h3>
+    {% if product.image %}
+    <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width: 200px; max-height: 200px;">
+    {% endif %}    
+    <p>{{ product.description }} </p>
+    <p>{{ product.stock }} </p>         
+    {% if user.is_authenticated %}
+    <p> <a href="{% url 'add-to-cart' product.slug %}">Ajouter dans le panier</a></p>  
+    {% endif %}      
+</ul>
+{% endblock %}

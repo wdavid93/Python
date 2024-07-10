@@ -1,0 +1,20 @@
+<!-- templates/store/view_cart.html -->
+{% extends 'base.html' %}
+
+{% block title %}Mon Panier{% endblock %}
+
+{% block content %}
+<h2>Mon Panier</h2>
+{% if cart_products %}
+    <ul>
+        {% for item in cart_products %}
+            <li>
+                {{ item.product.name }} - {{ item.quantity }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'checkout' %}">Passer à la caisse</a>
+{% else %}
+    <p>Votre panier est vide.</p>
+{% endif %}
+{% endblock %}

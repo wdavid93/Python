@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"> <!-- Déclaration de l'encodage des caractères -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Meta pour rendre la mise en page responsive -->
+    <title>{% block title %}Mon Site{% endblock %}</title> <!-- Titre de la page -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> <!-- Lien vers le fichier CSS de Bootstrap -->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet"> <!-- Lien vers le fichier CSS personnalisé -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"> <!-- Lien vers le fichier CSS pour les animations -->
+</head>
+<body>
+    <!-- Début du header, section d'en-tête du site -->
+    <header class="bg-primary text-white text-center py-3">
+        <div class="container">
+            <h1>
+                <!-- Lien vers la page d'accueil, utilisant le nom de la vue pour générer l'URL -->
+                <a href="{% url 'index' %}" class="text-white text-decoration-none">Mon Site</a>
+            </h1>
+            <!-- Barre de navigation -->
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <!-- Lien vers la page d'accueil -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">Home</a>
+                        </li>
+                        <!-- Lien vers la liste des produits -->
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <span class="nav-link">{{ user.username }}</span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'signup' %}">S'inscrire</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login' %}">Connexion</a>
+                            </li>
+                        {% endif %}
+                        <!-- Ajoutez d'autres liens de navigation ici -->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Début du contenu principal de la page -->
+    <main class="container mt-5">
+        <!-- Bloc de contenu, modifiable dans les templates enfants -->
+        {% block content %}
+        <!-- Contenu spécifique à chaque page -->
+        {% endblock %}
+    </main>
+    
+    <!-- Début du footer, section de pied de page du site -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <!-- Copyright avec l'année actuelle -->
+        <p>&copy; 2024 My E-commerce Site</p>
+    </footer>
+
+    <!-- Lien vers le fichier JavaScript de jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Lien vers le fichier JavaScript de Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Lien vers le fichier JavaScript pour les animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        // Initialiser les animations
+        new WOW().init();
+    </script>
+</body>
+</html>

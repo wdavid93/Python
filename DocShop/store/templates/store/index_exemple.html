@@ -1,0 +1,33 @@
+<!-- index.html -->
+
+<!-- Indiquer que ce template étend le fichier base.html -->
+{% extends "base.html" %}
+
+<!-- Définir le bloc title pour cette page spécifique -->
+{% block title %}
+Home - My E-commerce Site
+{% endblock %}
+
+<!-- Définir le bloc content pour cette page spécifique -->
+{% block content %}
+<!-- Titre de la page -->
+<h1>Welcome to My E-commerce Site</h1>
+<!-- Paragraphe d'introduction -->
+<p>Browse our collection of amazing products.</p>
+
+<!-- Liste des produits mis en avant -->
+<h2>Featured Products</h2>
+<ul>
+    <!-- Boucle pour chaque produit dans la liste des produits mis en avant -->
+    {% for product in featured_products %}
+        <li>
+            <!-- Afficher le nom et le prix du produit -->
+            {{ product.name }} - {{ product.price }} $
+            <!-- Afficher l'image du produit s'il y en a une -->
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100px; height: auto;">
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,45 @@
+<!-- base.html -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Déclaration de l'encodage des caractères -->
+    <meta charset="UTF-8">
+    <!-- Assurer une bonne mise en page sur les appareils mobiles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bloc de titre, modifiable dans les templates enfants -->
+    <title>{% block title %}My E-commerce Site{% endblock %}</title>
+    <!-- Lien vers le fichier CSS, utilisant le tag static de Django -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Début du header, section d'en-tête du site -->
+    <header>
+        <!-- Barre de navigation -->
+        <nav>
+            <ul>
+                <!-- Lien vers la page d'accueil, utilisant le nom de la vue pour générer l'URL -->
+                <li><a href="{% url 'product_list' %}">Home</a></li>
+                <!-- Ajoutez d'autres liens de navigation ici -->
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Début du contenu principal de la page -->
+    <main>
+        <!-- Bloc de contenu, modifiable dans les templates enfants -->
+        {% block content %}
+        <!-- Contenu spécifique à chaque page -->
+        {% endblock %}
+    </main>
+
+    <!-- Début du footer, section de pied de page du site -->
+    <footer>
+        <!-- Copyright avec l'année actuelle -->
+        <p>&copy; 2024 My E-commerce Site</p>
+    </footer>
+
+    <!-- Lien vers le fichier JavaScript, utilisant le tag static de Django -->
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

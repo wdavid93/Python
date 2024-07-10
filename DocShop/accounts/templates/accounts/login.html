@@ -1,0 +1,24 @@
+<!-- Indiquer que ce template étend le fichier base.html -->
+{% extends "base.html" %}
+
+<!-- Définir le bloc content pour cette page spécifique -->
+{% block content %}
+
+<h2>Connexion</h2> <!-- Titre de la section de connexion -->
+<form method="POST" > <!-- Début du formulaire, envoi des données par POST -->
+    {% csrf_token %}
+    <!-- Champ pour le nom d'utilisateur -->
+    <label for="username">Nom d'utilisateur:</label> <!-- Étiquette pour le champ du nom d'utilisateur -->
+    <input type="text" id="username" name="username" required> <!-- Champ de saisie pour le nom d'utilisateur, requis pour la soumission -->
+    <br><br> <!-- Saut de ligne pour espacement visuel -->
+
+    <!-- Champ pour le mot de passe -->
+    <label for="password">Mot de passe:</label> <!-- Étiquette pour le champ du mot de passe -->
+    <input type="password" id="password" name="password" required> <!-- Champ de saisie pour le mot de passe, requis pour la soumission -->
+    <br><br> <!-- Saut de ligne pour espacement visuel -->
+
+    <!-- Bouton de soumission -->
+    <button type="submit">Connexion</button> <!-- Bouton pour soumettre le formulaire -->
+</form>
+
+{% endblock %}
