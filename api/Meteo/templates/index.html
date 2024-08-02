@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Météo de la Ville</title>
+</head>
+<body>
+    <h1>Consulter la Météo</h1>
+    <form method="post">
+        <label for="city">Entrez le nom de la ville :</label>
+        <input type="text" id="city" name="city" required>
+        <button type="submit">Rechercher</button>
+    </form>
+    
+    {% if weather_data %}
+        <h2>Température :</h2>
+        <p>{{ weather_data }}</p>
+    {% endif %}
+</body>
+</html>
